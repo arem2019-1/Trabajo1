@@ -24,49 +24,36 @@ public class main {
     //private static ListaDinamica<Integer> numeros = new ListaDinamica<>();
     private static calcul calculos;
     private static LinkedList<Double> al=new LinkedList<Double>();  
+    private static LinkedList<Double> al2=new LinkedList<Double>();  
     public static void muestraContenido(String archivo) throws FileNotFoundException, IOException {
         String cadena;
         FileReader f = new FileReader(archivo);
         BufferedReader b = new BufferedReader(f);
         while((cadena = b.readLine())!=null) {
-            System.out.println(cadena);
+            //System.out.println(cadena);
             double doble = Double.parseDouble(cadena);
-            al.addLast(doble);
+            al.addLast(doble);            
         }
         b.close();
         media(al);
-        desviacionEstandar(al,media);
+        al2=al;
+        desviacionEstandar(al2,media);
     }
-    /**
-    public static void g(){
-        Iterator i=al.descendingIterator();
-        while(i.hasNext()){
-            System.out.println("re"+i.next());
-        
-        };
-    
-    }
-    */
     public static void media(LinkedList<Double> temp){
         media=0.0;
         calculos=new calcul();
         media=calculos.Media(temp);
         System.out.println("respuest a es"+media);
     
-    }
-    
+    }    
     public static void desviacionEstandar(LinkedList<Double> temp, Double media){
         desv=0.0;
         calculos=new calcul();
         desv=calculos.DesviaEstandar(temp,media);
         System.out.println("La desviacion estandar es "+desv);
-    
     }    
-    
     public static void main(String[] args) throws IOException{
         System.out.println("Hola");
-        muestraContenido("C:\\Users\\2098325\\Documents\\NetBeansProjects\\calculate\\src\\main\\prueba.txt");
-        
+        muestraContenido("/home/cesar/Escritorio/Arem/Trabajo1/prueba.txt");
     }
-    
 }
