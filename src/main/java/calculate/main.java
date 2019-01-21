@@ -10,8 +10,13 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static javafx.scene.input.KeyCode.T;
 
 /**
@@ -23,34 +28,49 @@ public class main {
     private static Double desv;
     //private static ListaDinamica<Integer> numeros = new ListaDinamica<>();
     private static calcul calculos;
-    private static LinkedList<Double> al=new LinkedList<Double>();  
-    public static void muestraContenido(String archivo) throws FileNotFoundException, IOException {
-        String cadena;
-        FileReader f = new FileReader(archivo);
-        BufferedReader b = new BufferedReader(f);
-        while((cadena = b.readLine())!=null) {
-            double doble = Double.parseDouble(cadena);
-            al.addLast(doble);
-        }
-        b.close();
-        media(al);
-        desviacionEstandar(al,media);
+    private static LinkedList<Double> col1=new LinkedList<Double>();  
+    private static LinkedList<Double> col2=new LinkedList<Double>();  
+    
+    public static void main(String[] args) throws IOException{
+        muestraContenido();
+        System.out.println("table 1:");
+        media(col1);
+        desviacionEstandar(col1, media);
+        System.out.println("table 2:");
+        media(col2);
+        desviacionEstandar(col2, media);        
+    }    
+    public static void muestraContenido() throws FileNotFoundException, IOException {
+    try {
+        Path filePath = Paths.get("src/main/java/calculate/prueba.txt");
+        Scanner scanner = new Scanner(filePath);
+        
+            while (scanner.hasNext()) {
+                if (scanner.hasNextDouble()) {
+                    //System.out.println(""+scanner.nextDouble());
+                    //System.out.println(""+scanner.nextDouble());
+                    col1.addFirst(scanner.nextDouble());
+                    col2.addFirst(scanner.nextDouble());
+                } else {
+                    scanner.next();
+                } 
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+        }        
     }
     public static void media(LinkedList<Double> temp){
         media=0.0;
         calculos=new calcul();
         media=calculos.Media(temp);
-        System.out.println("respuest a es"+media);
+        System.out.println("La media es: "+String.format("%.2f", media));
     
     }    
     public static void desviacionEstandar(LinkedList<Double> temp, Double media){
         desv=0.0;
         calculos=new calcul();
         desv=calculos.DesviaEstandar(temp,media);
-        System.out.println("La desviacion estandar es "+desv);
+        System.out.println("La desviacion estandar es "+String.format("%.2f", desv));
     }    
-    public static void main(String[] args) throws IOException{
-        System.out.println("Hola");
-        muestraContenido("/home/cesar/Escritorio/Arem/Trabajo1/prueba.txt");
-    }
+
 }
