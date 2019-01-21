@@ -24,7 +24,6 @@ public class main {
     //private static ListaDinamica<Integer> numeros = new ListaDinamica<>();
     private static calcul calculos;
     private static LinkedList<Double> al=new LinkedList<Double>();  
-    private static LinkedList<Double> al2=new LinkedList<Double>();  
     public static void muestraContenido(String archivo) throws FileNotFoundException, IOException {
         String cadena;
         FileReader f = new FileReader(archivo);
@@ -32,12 +31,10 @@ public class main {
         while((cadena = b.readLine())!=null) {
             //System.out.println(cadena);
             double doble = Double.parseDouble(cadena);
-            al.addLast(doble);            
         }
         b.close();
         media(al);
-        al2=al;
-        desviacionEstandar(al2,media);
+        desviacionEstandar(al,media);
     }
     public static void media(LinkedList<Double> temp){
         media=0.0;
