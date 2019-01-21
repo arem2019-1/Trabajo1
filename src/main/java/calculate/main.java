@@ -29,8 +29,8 @@ public class main {
         FileReader f = new FileReader(archivo);
         BufferedReader b = new BufferedReader(f);
         while((cadena = b.readLine())!=null) {
-            //System.out.println(cadena);
             double doble = Double.parseDouble(cadena);
+            al.addLast(doble);
         }
         b.close();
         media(al);
