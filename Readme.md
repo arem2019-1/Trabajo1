@@ -7,3 +7,4 @@ La siguiente aplicacion toma los valores de un documento .txt y obtiene la media
 A continuacion se muestra una imgaen de un diagrama de la aplicacion.
 
  ![](img/diag.png)
+
