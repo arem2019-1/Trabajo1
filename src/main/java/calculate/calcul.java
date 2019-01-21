@@ -17,6 +17,11 @@ public class calcul {
     public calcul(){
 
     }
+/**
+    * <p>Sirve para obtener la media.</p> * 
+ * @param datos Los datos que seran procesados, y se recibe una lista enlazada
+ * @return  Un dato en formato DOuble.
+ */
     public Double Media(LinkedList<Double>datos){
         Double suma=0.0;
         Iterator i=datos.descendingIterator();
@@ -26,7 +31,13 @@ public class calcul {
         int total=datos.size();
         return suma/total;
     }
-    
+/**
+     * <p>Sirve para obtener la Desviacion Estandar.</p>
+
+ * @param dat Es una lista enlazada en la cual vienen los datos para ser procesados.
+ * @param media Es una constante Double que sirve para obtener la desviacion.
+ * @return  f Que es el valor despues de procesar los datos.
+ */    
     public Double DesviaEstandar(LinkedList<Double> dat,Double media){
         int n=0;
         Double suma=0.0;

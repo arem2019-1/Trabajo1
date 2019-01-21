@@ -26,11 +26,15 @@ import static javafx.scene.input.KeyCode.T;
 public class main {
     private static Double media;
     private static Double desv;
-    //private static ListaDinamica<Integer> numeros = new ListaDinamica<>();
     private static calcul calculos;
     private static LinkedList<Double> col1=new LinkedList<Double>();  
     private static LinkedList<Double> col2=new LinkedList<Double>();  
     
+    /**
+     * 
+     * @param args Para iniciar la aplicacion.
+     * @throws IOException 
+     */
     public static void main(String[] args) throws IOException{
         muestraContenido();
         System.out.println("table 1:");
@@ -40,6 +44,11 @@ public class main {
         media(col2);
         desviacionEstandar(col2, media);        
     }    
+    /**
+     * 
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public static void muestraContenido() throws FileNotFoundException, IOException {
     try {
         Path filePath = Paths.get("src/main/java/calculate/prueba.txt");
@@ -59,13 +68,22 @@ public class main {
             Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
         }        
     }
+    /**
+     * 
+     * @param temp Es la lista enlazada con los datos a procesar
+     */
     public static void media(LinkedList<Double> temp){
         media=0.0;
         calculos=new calcul();
         media=calculos.Media(temp);
         System.out.println("La media es: "+String.format("%.2f", media));
     
-    }    
+    }  
+    /**
+     * 
+     * @param temp Es la lista enlazada con los datos a procesar 
+     * @param media Es la constante del valor de media.
+     */
     public static void desviacionEstandar(LinkedList<Double> temp, Double media){
         desv=0.0;
         calculos=new calcul();
